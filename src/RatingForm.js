@@ -19,7 +19,7 @@ class RatingForm extends React.Component {
 
     handleChange(target) {
         const {name, value} = target;
-        this.setState({[name]: value, message: `You rated the product ${value} stars!`});
+        this.setState({[name]: value, message: `You rated the product ${value} ${value === '1'? 'star': 'stars'}!`});
     }
 
     render() {
