@@ -23,6 +23,10 @@
 	stroke: gray;
 }
 
+input:focus + label {
+  padding-bottom: 20px;
+  border-bottom-style: dotted;
+} 
 input:checked + label > svg,
 .selected + label > svg {
 	fill: #036;

@@ -1,16 +1,25 @@
 import React from 'react';
 import StarInput from './StarInput';
 
+/* If a user interacts with the star rating app using keyboard, for every onChange focus event, 
+we will be submitting the rating. That is undesireable. In order to prevent that, we could add
+a hidden submit button. 
+
+Other alternative is to not submit the rating for onChange event. Instead, just change the state.
+And have a submit button at the end to POST the rating to server.
+*/
 class RatingForm extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            message: 'Currently, there are no reviews for this product.'
+        };
         this.handleChange = this.handleChange.bind(this);
     }
 
     handleChange(target) {
         const {name, value} = target;
-        this.setState({[name]: value});
+        this.setState({[name]: value, message: `You rated the product ${value} stars!`});
     }
 
     render() {
@@ -34,6 +43,7 @@ class RatingForm extends React.Component {
                     5 stars
                   </StarInput>
               </form>
+              <p>{this.state.message}</p>
             </div>
         );
     }
